@@ -1,0 +1,21 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Replace 'main' with your branch name if different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./  # Update if files are in a subdirectory
+
